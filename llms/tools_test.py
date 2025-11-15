@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
-from langchain.tools import tool
-from langchain_core.messages import AIMessageChunk
+from langchain.tools import tool, ToolRuntime
+from langchain_core.messages import AIMessageChunk, AIMessage, HumanMessage
 from pydantic import BaseModel, Field
 
 from llms.llm import llm
@@ -43,5 +43,6 @@ for chunk in model_with_tools.stream("What's the weather in Boston?"):
     gathered = chunk if gathered is None else gathered + chunk
     print(gathered.tool_calls)
 
-
-llm.invoke()
+#  content: str | list[str | dict] | None = None,   简单文本
+#  content_blocks: list[types.ContentBlock] | None = None,  多模态
+# HumanMessage()
